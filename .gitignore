@@ -1,0 +1,29 @@
+# Node modules - These are installed via npm, and don't need to be committed
+node_modules/
+
+# Build output directory (Webpack output folder)
+dist/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# npm package lock file (optional, can be useful to keep)
+# package-lock.json
+
+# IDE settings (e.g., VSCode, Sublime Text)
+.vscode/
+.idea/
+
+# Environment variables file
+.env
+
+# Temporary files generated during build (e.g., compiled Sass or JavaScript)
+*.cache/
+*.tmp
+
+# Coverage folder for code coverage reports
+coverage/
