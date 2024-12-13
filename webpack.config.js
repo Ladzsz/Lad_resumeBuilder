@@ -29,6 +29,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+
+    new HtmlWebpackPlugin({
+      template: './src/input.html', 
+      filename: 'input.html', 
+  }),
     new MiniCssExtractPlugin(),
   ],
 
