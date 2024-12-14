@@ -1,0 +1,61 @@
+/*styling form*/
+.form-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+
+.form-container {
+    width: 75%;
+    max-width: 600px;
+    background: #D279B9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+}
+
+/*styling buttons*/
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #A8548E;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    color: white;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/*styling labels and inputs*/
+label {
+    font-weight: bold;
+}
+
+input {
+    border-radius: 8px;
+}
+

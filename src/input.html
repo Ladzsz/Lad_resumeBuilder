@@ -6,6 +6,84 @@
     <title>Resume Builder</title>
 </head>
 <body>
-    <h1>Placeholder</h1>
+    <!--Header Area-->
+    <header>
+        <img src="Logo.png" alt="Logo img">
+        <h2>Lad's Resume Builder</h2>
+        <div class="dropdown">
+            <button class="dropbtn">Contact</button>
+            <div class="dropdown-content">
+            <h3><a href="https://github.com/Ladzsz" rel="nonopener" target="_blank">My Github</a></h3>
+            </div>
+        </div>
+    </header>
+
+    <!--Form area-->
+    <div class="form-area">
+        <div class="form-container">
+          <form id="resumeForm">
+            <!-- Contact Section -->
+            <div class="form-section active" id="section-contact">
+              <h2>Contact Information</h2>
+              <label for="name">Full Name</label><br>
+              <input type="text" id="name" name="name" required /><br><br>
+              <label for="email">Email Address</label><br>
+              <input type="email" id="email" name="email" required /><br><br>
+              <label for="phone">Phone Number</label><br>
+              <input type="text" id="phone" name="phone" required />
+            </div>
+    
+            <!-- Education Section -->
+            <div class="form-section" id="section-education">
+              <h2>Education</h2>
+              <div class="education-container">
+                <div class="education-entry">
+                  <label for="school">School/University</label><br>
+                  <input type="text" id="school" name="school[]" required /><br><br>
+                  <label for="degree">Degree</label><br>
+                  <input type="text" id="degree" name="degree[]" required /><br><br>
+                  <label for="graduation">Graduation Year</label><br>
+                  <input type="text" id="graduation" name="graduation[]" required /><br><br>
+                </div>
+              </div>
+              <button type="button" class="add-button" id="addEducation">Add More Education</button>
+            </div>
+    
+            <!-- Work Experience Section -->
+            <div class="form-section" id="section-experience">
+              <h2>Work Experience</h2>
+              <div class="experience-container">
+                <div class="experience-entry">
+                  <label for="jobTitle">Job Title</label><br>
+                  <input type="text" id="jobTitle" name="jobTitle[]" required /><br><br>
+                  <label for="company">Company</label><br>
+                  <input type="text" id="company" name="company[]" required /><br><br>
+                  <label for="years">Years of Experience</label><br>
+                  <input type="text" id="years" name="years[]" required /><br><br>
+                </div>
+              </div>
+              <button type="button" class="add-button" id="addExperience">Add More Experience</button>
+            </div>
+
+            <!--Skills Section-->
+
+
+            <!--Summary Section-->
+    
+            <!-- Navigation Buttons -->
+            <div class="button-container">
+              <button type="button" id="prevButton" disabled>Previous</button>
+              <button type="button" id="nextButton">Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    <!--footer area-->
+    <footer>
+        <div class="footer_con">
+            &copy; 2024 London Mason
+          </div>
+    </footer>
 </body>
 </html>
