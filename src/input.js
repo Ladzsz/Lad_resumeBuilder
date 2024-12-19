@@ -11,7 +11,63 @@ function updateFormSection() {
     section.classList.toggle('active', index === currentSectionIndex);
     });
     prevButton.disabled = currentSectionIndex === 0;
-    nextButton.textContent = currentSectionIndex === sections.length - 1 ? 'Submit' : 'Next';
+
+    // If statement to make the buttons class submit when it becomes submit
+    if (currentSectionIndex === sections.length - 1) {
+        nextButton.textContent = 'Submit';
+        nextButton.classList.add('submit');
+
+        // Submit button event listener
+        nextButton.addEventListener('click', () => {
+            // Grabbing inputs
+
+            //contact
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            
+            //education
+            const school = document.getElementById('school');
+            const degree = document.getElementById('degree');
+            const graduation = document.getElementById('graduation');
+
+            //work experience
+            const jobTitle = document.getElementById('jobTitle');
+            const company = document.getElementById('company');
+            const years = document.getElementById('years');
+
+            //skills
+            const skill = document.getElementById('skill');
+
+            //summary
+            const Summary = document.getElementById('Summary');
+
+            // Putting the user data into an object
+            const Userdata = {
+                Fullname: name,
+                UserEmail: email,
+                PhoneNumber: phone,
+                UserSchool: school,
+                UserDegree: degree,
+                UserGraduation: graduation,
+                JobName: jobTitle,
+                CompanyName: company,
+                YearsWorked: years,
+                UserSkills: skill,
+                UserSummary: Summary
+            };
+
+            // Storing object as json string
+            localStorage.setItem('InputData', JSON.stringify(Userdata));
+
+            //Linking to next page
+            window.location.href = 'style.html';
+            
+        });
+    } else {
+        nextButton.textContent = 'Next';
+        nextButton.classList.remove('submit');
+    }
 }
 
 //event listener for previous button
@@ -70,4 +126,18 @@ document.getElementById('addExperience').addEventListener('click', () => {
     `;
 
     experienceContainer.appendChild(newEntry);
+});
+
+// Add dynamic skills fields
+document.getElementById('addSkills').addEventListener('click', () => {
+    const skillsContainer = document.querySelector('.skill-container');
+    const newEntry = document.createElement('div');
+    newEntry.classList.add('skills-entry');
+
+    newEntry.innerHTML = `
+        <label for="Skills">Skills</label><br>
+        <input type="text" id="skill" name="skill[]" required /><br><br>
+    `;
+
+    skillsContainer.appendChild(newEntry);
 });

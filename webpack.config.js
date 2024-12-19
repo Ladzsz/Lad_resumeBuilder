@@ -34,6 +34,11 @@ module.exports = {
       template: './src/input.html', 
       filename: 'input.html', 
   }),
+
+    new HtmlWebpackPlugin({
+      template: './src/style.html', 
+      filename: 'style.html', 
+  }),
     new MiniCssExtractPlugin(),
   ],
 
