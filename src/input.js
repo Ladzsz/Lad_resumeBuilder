@@ -4,6 +4,7 @@ let currentSectionIndex = 0;
 
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
+const submitButton = document.getElementById('submitButton')
 
 //function to update the form
 function updateFormSection() {
@@ -12,64 +13,13 @@ function updateFormSection() {
     });
     prevButton.disabled = currentSectionIndex === 0;
 
-    // If statement to make the buttons class submit when it becomes submit
+    // If statement to make the submit button appear
     if (currentSectionIndex === sections.length - 1) {
-        nextButton.textContent = 'Submit';
-        nextButton.classList.add('submit');
-
-        // Submit button event listener
-        nextButton.addEventListener('click', () => {
-            // Clear all items from localStorage
-            localStorage.clear();
-
-            // Grabbing inputs
-
-            //contact
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            
-            //education
-            const school = document.getElementById('school');
-            const degree = document.getElementById('degree');
-            const graduation = document.getElementById('graduation');
-
-            //work experience
-            const jobTitle = document.getElementById('jobTitle');
-            const company = document.getElementById('company');
-            const years = document.getElementById('years');
-
-            //skills
-            const skill = document.getElementById('skill');
-
-            //summary
-            const Summary = document.getElementById('Summary');
-
-            // Putting the user data into an object
-            const Userdata = {
-                Fullname: name,
-                UserEmail: email,
-                PhoneNumber: phone,
-                UserSchool: school,
-                UserDegree: degree,
-                UserGraduation: graduation,
-                JobName: jobTitle,
-                CompanyName: company,
-                YearsWorked: years,
-                UserSkills: skill,
-                UserSummary: Summary
-            };
-
-            // Storing object as json string
-            localStorage.setItem('InputData', JSON.stringify(Userdata));
-
-            //Linking to next page
-            window.location.href = 'style.html';
-            
-        });
+        nextButton.style.display = 'none';
+        submitButton.style.display = 'block'
     } else {
-        nextButton.textContent = 'Next';
-        nextButton.classList.remove('submit');
+        nextButton.style.display = 'block';
+        submitButton.style.display = 'none';
     }
 }
 
@@ -86,9 +36,6 @@ nextButton.addEventListener('click', () => {
     if (currentSectionIndex < sections.length - 1) {
     currentSectionIndex++;
     updateFormSection();
-    } else {
-    // Submit the form
-    document.getElementById('resumeForm').submit();
     }
 });
 
@@ -143,4 +90,59 @@ document.getElementById('addSkills').addEventListener('click', () => {
     `;
 
     skillsContainer.appendChild(newEntry);
+});
+
+//submit function
+function proccessInfo() {
+    // Clear all items from localStorage
+    localStorage.clear();
+
+    // Grabbing inputs
+
+    //contact
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    
+    //education
+    const school = document.getElementById('school').value;
+    const degree = document.getElementById('degree').value;
+    const graduation = document.getElementById('graduation').value;
+
+    //work experience
+    const jobTitle = document.getElementById('jobTitle').value;
+    const company = document.getElementById('company').value;
+    const years = document.getElementById('years').value;
+
+    //skills
+    const skill = document.getElementById('skill').value;
+
+    //summary
+    const Summary = document.getElementById('Summary').value;
+
+    // Putting the user data into an object
+    const Userdata = {
+        Fullname: name,
+        UserEmail: email,
+        PhoneNumber: phone,
+        UserSchool: school,
+        UserDegree: degree,
+        UserGraduation: graduation,
+        JobName: jobTitle,
+        CompanyName: company,
+        YearsWorked: years,
+        UserSkills: skill,
+        UserSummary: Summary
+    };
+
+    // Storing object as json string
+    localStorage.setItem('InputData', JSON.stringify(Userdata));
+
+    //Linking to next page
+    window.location.href = 'style.html';
+}
+
+// Add dynamic skills fields
+document.getElementById('submitButton').addEventListener('click', () => {
+    proccessInfo();
 });
