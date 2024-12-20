@@ -142,7 +142,25 @@ function proccessInfo() {
     window.location.href = 'style.html';
 }
 
-// Add dynamic skills fields
+// Event listener for submit button
 document.getElementById('submitButton').addEventListener('click', () => {
+    let validation = '';
+
+    // Keep prompting until user types 'yes'
+    while (validation !== "yes") {
+        validation = prompt("Submit Info? (yes/no)").trim().toLowerCase();
+
+        // If user cancels the prompt break out of the loop
+        if (validation === null) {
+            return null;
+        }
+
+        // If user enters no break out of loop and cancel
+        if (validation === "no") {
+            return null;
+        }
+    }
+
+    // If the user typed "yes" proceed to process the info
     proccessInfo();
 });
