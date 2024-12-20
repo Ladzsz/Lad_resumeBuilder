@@ -19,6 +19,9 @@ function updateFormSection() {
 
         // Submit button event listener
         nextButton.addEventListener('click', () => {
+            // Clear all items from localStorage
+            localStorage.clear();
+
             // Grabbing inputs
 
             //contact
