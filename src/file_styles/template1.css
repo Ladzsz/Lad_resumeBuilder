@@ -1,0 +1,84 @@
+/*styling body and html*/
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #A49A91;
+}
+
+.simple-info {
+    font-weight: bold;
+    text-align: center;
+}
+
+/*styling the contact*/
+#contactSec {
+    text-align: center;
+    background-color: #7C7368;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding: 20px;
+}
+
+#contactSec2 {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-bottom: solid 1px black;
+    margin-bottom: 20px;
+}
+
+/*styling education*/
+#educationSec {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+    border-bottom: solid 1px black;
+    margin-bottom: 20px;
+}
+
+/*styling work*/
+#workSec {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+    border-bottom: solid 1px black;
+    margin-bottom: 20px;
+}
+
+/*styling skills sec*/
+#skillsSec {
+    text-align: center;
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+    border-bottom: solid 1px black;
+    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto 100px;
+}
+
+/*styling summary sec*/
+#summarySec {
+    text-align: center;
+    overflow-wrap: break-word;
+    margin: 10px;
+}
