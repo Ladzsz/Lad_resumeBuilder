@@ -1,0 +1,11 @@
+/*styling the template imgs*/
+.template-imgs {
+    width: fit-content;
+    max-width: 100%;
+    height: 100%;
+}
+
+/*styling the template header*/
+#templateHEAD {
+    text-align: center;
+}
