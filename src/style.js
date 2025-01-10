@@ -73,16 +73,10 @@ body {
 /*styling skills sec*/
 #skillsSec {
     text-align: center;
-    display: grid;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
     flex-direction: column;
     border-bottom: solid 1px black;
     margin-bottom: 20px;
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: auto 100px;
 }
 
 /*styling summary sec*/
@@ -127,9 +121,9 @@ function template1() {
         <div id="educationSec">
             ${resInfo.userEducation.map(edu => `
                 <div class="education-entry">
-                    <h3 id="school" class="text">${edu.school}</h3>
-                    <h3 id="degree" class="text">${edu.degree}</h3>
-                    <h3 id="graduation" class="text">${edu.graduation}</h3>
+                    <h3 id="school" class="text">School: ${edu.school}</h3>
+                    <h3 id="degree" class="text">Degree: ${edu.degree}</h3>
+                    <h3 id="graduation" class="text">Graduation Year: ${edu.graduation}</h3>
                 </div>
             `).join('')}
         </div>
@@ -139,9 +133,9 @@ function template1() {
         <div id="workSec">
             ${resInfo.userExperience.map(work => `
                 <div class="work-entry">
-                    <h3 id="jobtitle" class="text">${work.jobTitle}</h3>
-                    <h3 id="company" class="text">${work.company}</h3>
-                    <h3 id="years" class="text">${work.yearsWorked}</h3>
+                    <h3 id="jobtitle" class="text">Jobtitle: ${work.jobTitle}</h3>
+                    <h3 id="company" class="text">Company: ${work.company}</h3>
+                    <h3 id="years" class="text">Years: ${work.yearsWorked}</h3>
                 </div>
             `).join('')}
         </div>
