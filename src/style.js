@@ -1,3 +1,6 @@
+// Retrieve the JSON string from localStorage
+const user = localStorage.getItem('InputData');
+
 //defining htmlcontent
 let htmlContent = "";
 
@@ -92,65 +95,76 @@ body {
 
 // TEMPLATE ONE function
 function template1() {
-    // Define the HTML content
+    const resInfo = JSON.parse(user);
+
+    // Define the HTML content for the whole page
     htmlContent = `
-      <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Your Resume</title>
-            <link rel="stylesheet" href="style.css">
-            <style>
-            ${customStyles}
-            </style>
-        </head>
-        <body>
-            <!--contact area-->
-            <div id="contactSec">
-                <h1 id="name" class="text"></h1>
-            </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Resume</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+        ${customStyles}
+        </style>
+    </head>
+    <body>
+        <!-- Contact Area -->
+        <div id="contactSec">
+            <h1 id="name" class="text">${resInfo.fullName}</h1>
+        </div>
 
-            <h2 class="simple-info">Contact</h2>
-            
-            <div id="contactSec2">
-                <h3 id="phonenumber" class="text"></h3>
-                <h3 id="email" class="text"></h3>
-            </div>
+        <h2 class="simple-info">Contact</h2>
+        <div id="contactSec2">
+            <h3 id="phonenumber" class="text">${resInfo.phoneNumber}</h3>
+            <h3 id="email" class="text">${resInfo.userEmail}</h3>
+        </div>
 
-            <!--education area-->
-            <h2 class="simple-info">Education</h2>
-            <div id="educationSec">
-                <h3 id="school" class="text"></h3>
-                <h3 id="degree" class="text"></h3>
-                <h3 id="graduation" class="text"></h3>
-            </div>
+        <!-- Education Section -->
+        <h2 class="simple-info">Education</h2>
+        <div id="educationSec">
+            ${resInfo.userEducation.map(edu => `
+                <div class="education-entry">
+                    <h3 id="school" class="text">${edu.school}</h3>
+                    <h3 id="degree" class="text">${edu.degree}</h3>
+                    <h3 id="graduation" class="text">${edu.graduation}</h3>
+                </div>
+            `).join('')}
+        </div>
 
-            <!--work area-->
-            <h2 class="simple-info">Work Experience</h2>
-            <div id="workSec">
-                <h3 id="jobtitle" class="text"></h3>
-                <h3 id="company" class="text"></h3>
-                <h3 id="years" class="text"></h3>
-            </div>
+        <!-- Work Experience Section -->
+        <h2 class="simple-info">Work Experience</h2>
+        <div id="workSec">
+            ${resInfo.userExperience.map(work => `
+                <div class="work-entry">
+                    <h3 id="jobtitle" class="text">${work.jobTitle}</h3>
+                    <h3 id="company" class="text">${work.company}</h3>
+                    <h3 id="years" class="text">${work.yearsWorked}</h3>
+                </div>
+            `).join('')}
+        </div>
 
-            <!--Skills area-->
-            <h2 class="simple-info">Skills</h2>
-            <div id="skillsSec">
-                <h3 id="skills" class="text"></h3>
-            </div>
+        <!-- Skills Section -->
+        <h2 class="simple-info">Skills</h2>
+        <div id="skillsSec">
+            <ul>
+                ${resInfo.userSkills.map(skillObj => `<h3 class="text">${skillObj.skill}</h3>`).join('')}
+            </ul>
+        </div>
 
-            <!--summary area-->
-            <h2 class="simple-info">Summary</h2>
-            <div id="summarySec" class="text">
-                <h3></h3>
-            </div>
-        </body>
-        </html>
-    `;
+        <!-- Summary Section -->
+        <h2 class="simple-info">Summary</h2>
+        <div id="summarySec" class="text">
+            <h3>${resInfo.userSummary}</h3>
+        </div>
+    </body>
+    </html>`;
 
     console.log("HTML content generated!");
 }
+
 
 // Download function
 function downloadResume() {

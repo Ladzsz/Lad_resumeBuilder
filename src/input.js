@@ -105,31 +105,38 @@ document.addEventListener("DOMContentLoaded", () => {
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
 
-        const school = document.getElementById('school').value;
-        const degree = document.getElementById('degree').value;
-        const graduation = document.getElementById('graduation').value;
-
-        const jobTitle = document.getElementById('jobTitle').value;
-        const company = document.getElementById('company').value;
-        const years = document.getElementById('years').value;
-
-        const skill = document.getElementById('skill').value;
-
         const summary = document.getElementById('Summary').value;
+
+        // Grabbing dynamic inputs (Education & Experience & Skills)
+        const schools = Array.from(document.querySelectorAll('input[name="school[]"]')).map(input => input.value);
+        const degrees = Array.from(document.querySelectorAll('input[name="degree[]"]')).map(input => input.value);
+        const graduations = Array.from(document.querySelectorAll('input[name="graduation[]"]')).map(input => input.value);
+
+        const jobTitles = Array.from(document.querySelectorAll('input[name="jobTitle[]"]')).map(input => input.value);
+        const companies = Array.from(document.querySelectorAll('input[name="company[]"]')).map(input => input.value);
+        const years = Array.from(document.querySelectorAll('input[name="years[]"]')).map(input => input.value);
+
+        const skills = Array.from(document.querySelectorAll('input[name="skill[]"]')).map(input => input.value);
 
         // Putting user data into an object
         const userData = {
             fullName: name,
             userEmail: email,
             phoneNumber: phone,
-            userSchool: school,
-            userDegree: degree,
-            userGraduation: graduation,
-            jobName: jobTitle,
-            companyName: company,
-            yearsWorked: years,
-            userSkills: skill,
-            userSummary: summary
+            userSummary: summary,
+            userSkills: skills.map(skill => ({
+                skill: skill 
+            })),
+            userEducation: schools.map((school, index) => ({
+                school: school,
+                degree: degrees[index] || '',
+                graduation: graduations[index] || ''
+            })),
+            userExperience: jobTitles.map((jobTitle, index) => ({
+                jobTitle: jobTitle,
+                company: companies[index] || '',
+                yearsWorked: years[index] || ''
+            }))
         };
 
         // Storing object as JSON string
@@ -140,17 +147,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Event listener for submit button
-    submitButton.addEventListener('click', () => {
-        let validation = '';
+    submitButton.addEventListener('click', (event) => {
+        // Prevent the form from submitting (if it's inside a form)
+        event.preventDefault();
 
-        while (validation !== "yes") {
-            validation = prompt("Submit Info? (yes/no)").trim().toLowerCase();
+        // Prompt user for confirmation
+        const validation = prompt("Submit Info? (yes/no)").trim().toLowerCase();
 
-            if (validation === null || validation === "no") {
-                return;
-            }
+        //ensure user enters yes or no
+        if (validation !== 'yes' && validation !== 'no') {
+            alert("Please type 'yes' or 'no'.");
         }
 
-        processInfo();
+        // Check if the user typed 'yes'
+        if (validation === "yes") {
+            processInfo();
+            console.log("going to next page")
+        } else if (validation === "no" || validation === null) {
+            // If 'no' or cancelled, just return without doing anything
+            console.log("Submission cancelled.");
+        }
     });
 });
